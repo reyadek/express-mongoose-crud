@@ -1,0 +1,57 @@
+<div class="container mt-4">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-6">
+      <h4 class="text-center">List Student</h4>
+      <a href="/student/add" class="btn btn-sm btn-primary mb-2">Add data</a>
+
+      <% if (message.length !== 0) { %>
+      <div class="alert alert-success" role="alert"><%= message %></div>
+      <% } %> <% if (list.length === 0) { %>
+      <div class="alert alert-danger" role="alert">Data empty!</div>
+      <% }else { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% list.forEach((data, i) => { %>
+          <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= data.name %></td>
+            <td><%= data.email %></td>
+            <td><%= data.phone %></td>
+            <td>
+              <a
+                href="/student/edit/<%= data._id %>"
+                class="btn btn-sm btn-primary badge rounded-pills"
+              >
+                Edit
+              </a>
+              <form
+                method="POST"
+                action="/student/delete/<%= data._id %>?_method=DELETE"
+                class="d-inline"
+              >
+                <button
+                  type="submit"
+                  class="btn btn-sm btn-danger badge rounded-pills"
+                  onclick="return confirm('Delete this data?');"
+                >
+                  Delete
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </div>
+</div>
