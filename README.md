@@ -20,6 +20,7 @@ This is simple application CRUD basic javascript with NodeJS
 git clone https://github.com/reyadek/express-mongoose-crud.git
 - `cd express-mongoose-crud`
 - `npm install`
+- `nodemon app`
 
 
 
